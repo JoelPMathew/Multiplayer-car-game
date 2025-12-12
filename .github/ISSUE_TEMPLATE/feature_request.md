@@ -1,6 +1,6 @@
 ---
 name: "Feature Request"
-description: "Suggest a new feature or enhancement for PatchFest Racer."
+about: "Suggest a new feature or enhancement for PatchFest Racer."
 title: "[FEATURE] "
 labels: ["enhancement"]
 ---
