@@ -1,0 +1,1 @@
+- [ ] Modify the drawing loop in client.py to add a white border around the local player's rectangle while keeping other players as default green rectangles.

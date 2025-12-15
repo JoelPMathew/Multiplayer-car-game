@@ -96,6 +96,8 @@ while running:
     screen.fill((30, 30, 30))
     for p in client.players:
         pygame.draw.rect(screen, (0,255,0), (p["x"], p["y"], 40, 40))
+        if p["id"] == client.id:
+            pygame.draw.rect(screen, (255,255,255), (p["x"], p["y"], 40, 40), 3)
 
     pygame.display.flip()
     clock.tick(60)
