@@ -67,6 +67,7 @@ class Client:
 pygame.init()
 screen = pygame.display.set_mode((1000, 700))
 clock = pygame.time.Clock()
+font = pygame.font.SysFont(None, 24)
 
 client = Client()
 
@@ -96,6 +97,19 @@ while running:
     screen.fill((30, 30, 30))
     for p in client.players:
         pygame.draw.rect(screen, (0,255,0), (p["x"], p["y"], 40, 40))
+
+    # sidebar showing connected player IDs (updates in real-time)
+    sidebar_w = 220
+    sx = screen.get_width() - sidebar_w
+    pygame.draw.rect(screen, (40, 40, 40), (sx, 0, sidebar_w, screen.get_height()))
+    hdr = font.render("Players", True, (255, 255, 255))
+    screen.blit(hdr, (sx + 10, 10))
+    for i, p in enumerate(client.players):
+        y = 40 + i * 28
+        my_id = getattr(client, "id", None)
+        color = (255, 220, 0) if my_id and p.get("id") == my_id else (200, 200, 200)
+        txt = font.render(p.get("id", "?"), True, color)
+        screen.blit(txt, (sx + 10, y))
 
     pygame.display.flip()
     clock.tick(60)
